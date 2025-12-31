@@ -1,0 +1,571 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #FFB6C1;
+  --soft-pink: #FFC9D1;
+  --peach: #FFD4BC;
+  --cream: #FFF8F0;
+  --gold: #FFD700;
+  --rose: #FF91A4;
+  --light-lavender: #E6E6FA;
+  --soft-blue: #B0E0E6;
+  --white: #FFFFFF;
+  --text-dark: #4A4A4A;
+  --shadow: rgba(255, 182, 193, 0.3);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  overflow-x: hidden;
+  background: linear-gradient(135deg, var(--cream) 0%, var(--soft-pink) 50%, var(--peach) 100%);
+  min-height: 100vh;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.section.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+}
+
+#welcome-section {
+  background: linear-gradient(135deg, var(--soft-pink) 0%, var(--peach) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.floating-hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.6;
+  animation: float-up 8s infinite ease-in-out;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.welcome-content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  max-width: 800px;
+}
+
+.typing-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--rose);
+  margin-bottom: 1.5rem;
+  min-height: 120px;
+  text-shadow: 2px 2px 10px var(--shadow);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fade-in 1s ease forwards 4s;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+.continue-btn {
+  background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+  color: white;
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  opacity: 0;
+  animation: fade-in 1s ease forwards 4.5s, glow 2s infinite alternate;
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.continue-btn:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 12px 30px var(--shadow);
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 8px 20px var(--shadow);
+  }
+  to {
+    box-shadow: 0 8px 40px rgba(255, 145, 164, 0.6);
+  }
+}
+
+#choice-section {
+  background: linear-gradient(135deg, var(--cream) 0%, var(--light-lavender) 100%);
+}
+
+.choice-content {
+  text-align: center;
+  max-width: 900px;
+}
+
+.choice-question {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--rose);
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 8px var(--shadow);
+}
+
+.choice-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.choice-btn {
+  background: var(--white);
+  border: 3px solid var(--pink);
+  padding: 2rem 3rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  min-width: 280px;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.choice-btn .emoji {
+  font-size: 3rem;
+  display: block;
+}
+
+.choice-btn:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 15px 40px rgba(255, 145, 164, 0.4);
+  border-color: var(--rose);
+}
+
+.choice-btn.with-yash {
+  background: linear-gradient(135deg, var(--soft-pink) 0%, var(--white) 100%);
+}
+
+.choice-btn.alone {
+  background: linear-gradient(135deg, var(--white) 0%, var(--cream) 100%);
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+#celebration-section {
+  background: linear-gradient(135deg, var(--soft-pink) 0%, var(--gold) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  animation: confetti-fall 3s linear;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.celebration-content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.celebration-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+  animation: bounce-in 1s ease;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.celebration-subtitle {
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 4rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.gift-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: slide-up 0.8s ease forwards;
+  opacity: 0;
+}
+
+.gift-card:nth-child(1) { animation-delay: 0.2s; }
+.gift-card:nth-child(2) { animation-delay: 0.4s; }
+.gift-card:nth-child(3) { animation-delay: 0.6s; }
+.gift-card:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes slide-up {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.gift-card:hover {
+  transform: translateY(-15px) rotate(2deg);
+  box-shadow: 0 20px 50px rgba(255, 145, 164, 0.4);
+}
+
+.gift-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.gift-card h3 {
+  font-size: 1.5rem;
+  color: var(--rose);
+  margin-bottom: 0.5rem;
+}
+
+.gift-card p {
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+}
+
+.footer p {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.signature {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+#rejection-section {
+  background: linear-gradient(135deg, var(--peach) 0%, var(--soft-blue) 100%);
+}
+
+.rejection-content {
+  text-align: center;
+  max-width: 800px;
+}
+
+.rejection-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--rose);
+  margin-bottom: 2rem;
+  animation: fade-in 0.5s ease;
+}
+
+.loading-messages {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin: 2rem 0;
+  min-height: 60px;
+}
+
+.sweet-message {
+  font-size: 1.8rem;
+  color: var(--rose);
+  margin: 2rem 0;
+  font-weight: 600;
+  animation: fade-in 1s ease;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.encouragement {
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  margin-top: 2rem;
+  font-style: italic;
+  animation: fade-in 1s ease 1s forwards;
+  opacity: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--white);
+  padding: 3rem;
+  border-radius: 30px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  animation: modal-pop 0.5s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modal-pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--rose);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+  background: var(--gold);
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.modal-body h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: var(--rose);
+  margin-bottom: 1.5rem;
+}
+
+.modal-body p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .typing-text {
+    font-size: 2.5rem;
+    min-height: 90px;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .continue-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .choice-question {
+    font-size: 2rem;
+  }
+
+  .choice-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .choice-btn {
+    min-width: 100%;
+    max-width: 350px;
+  }
+
+  .celebration-title {
+    font-size: 2.5rem;
+  }
+
+  .celebration-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .gifts-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .rejection-title {
+    font-size: 2rem;
+  }
+
+  .sweet-message {
+    font-size: 1.4rem;
+  }
+
+  .modal-content {
+    padding: 2rem;
+  }
+
+  .modal-body h2 {
+    font-size: 2rem;
+  }
+
+  .modal-body p {
+    font-size: 1rem;
+  }
+}

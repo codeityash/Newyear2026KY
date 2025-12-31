@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy New Year 2026 ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Section 1: Welcome Screen -->
+      <section id="welcome-section" class="section active">
+        <div class="floating-hearts" id="floating-hearts"></div>
+        <div class="welcome-content">
+          <h1 class="typing-text" id="typing-text"></h1>
+          <p class="subtitle" id="subtitle"></p>
+          <button class="continue-btn" id="continue-btn">Continue ✨</button>
+        </div>
+      </section>
+
+      <!-- Section 2: The Choice -->
+      <section id="choice-section" class="section">
+        <div class="choice-content">
+          <h2 class="choice-question">How do you want to move into 2026?</h2>
+          <div class="choice-buttons">
+            <button class="choice-btn with-yash" id="with-yash">
+              <span class="emoji">✨</span>
+              <span class="text">Move into 2026 with Yash</span>
+            </button>
+            <button class="choice-btn alone" id="alone">
+              <span class="emoji">🙂</span>
+              <span class="text">Move into 2026 alone</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Celebration (Option 1) -->
+      <section id="celebration-section" class="section">
+        <div class="confetti-container" id="confetti-container"></div>
+        <div class="celebration-content">
+          <h2 class="celebration-title">Best choice ever 💖</h2>
+          <p class="celebration-subtitle">Thank you for choosing us. 2026 already feels magical.</p>
+
+          <div class="gifts-grid">
+            <div class="gift-card" data-gift="love-letter">
+              <div class="gift-icon">🎁</div>
+              <h3>Love Letter</h3>
+              <p>A message from my heart</p>
+            </div>
+            <div class="gift-card" data-gift="greeting">
+              <div class="gift-icon">💌</div>
+              <h3>Greeting Card</h3>
+              <p>New Year wishes</p>
+            </div>
+            <div class="gift-card" data-gift="promise">
+              <div class="gift-icon">🌹</div>
+              <h3>Promise Card</h3>
+              <p>Our future together</p>
+            </div>
+            <div class="gift-card" data-gift="memory">
+              <div class="gift-icon">🎆</div>
+              <h3>Memory Card</h3>
+              <p>Making memories in 2026</p>
+            </div>
+          </div>
+
+          <footer class="footer">
+            <p>Happy New Year 2026 ❤️</p>
+            <p>With love,</p>
+            <p class="signature">Yash</p>
+          </footer>
+        </div>
+      </section>
+
+      <!-- Section 4: Playful Rejection -->
+      <section id="rejection-section" class="section">
+        <div class="rejection-content">
+          <h2 class="rejection-title" id="rejection-title">Hmm… are you sure? 🤨</h2>
+          <div class="loading-messages" id="loading-messages"></div>
+          <p class="sweet-message" id="sweet-message"></p>
+          <button class="choice-btn with-yash pulse" id="retry-yash">
+            <span class="emoji">✨</span>
+            <span class="text">Move into 2026 with Yash</span>
+          </button>
+          <p class="encouragement">Go on… choose the right one 😉</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal for Gifts -->
+    <div class="modal" id="gift-modal">
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close">×</button>
+        <div class="modal-body" id="modal-body"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
