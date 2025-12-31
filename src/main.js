@@ -145,7 +145,6 @@ function showSection(sectionId) {
   const targetSection = document.getElementById(sectionId);
   if (targetSection) {
     targetSection.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 
